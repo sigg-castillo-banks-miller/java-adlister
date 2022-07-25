@@ -8,16 +8,19 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
-    <div class="container">
+    <div class="container mx-auto">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
     </div>
-    <div class="info-container">
-        <div class="info-block">
+    <div class="info-container  d-flex justify-content-between align-items-center mx-auto">
+        <div class="info-block ">
             <div>
                 <h6>username: ${sessionScope.user.username}</h6>
             </div>
             <div>
                 <h6>email: ${sessionScope.user.email}</h6>
+            </div>
+            <div>
+                <input type="submit" class="btn btn-primary btn-block">
             </div>
         </div>
     </div>
