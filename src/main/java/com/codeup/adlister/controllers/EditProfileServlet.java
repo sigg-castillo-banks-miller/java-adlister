@@ -12,7 +12,7 @@ import java.io.IOException;
 
 
     @WebServlet(name = "controllers.editProfileServlet", urlPatterns = "/profile")
-    public class editProfileServlet extends HttpServlet {
+    public class EditProfileServlet extends HttpServlet {
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
           try{
 
