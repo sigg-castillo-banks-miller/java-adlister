@@ -51,6 +51,17 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    @Override
+    public Long destroy(User user) {
+        String query ="DELETE FROM users WHERE username = ? LIMIT 1 ";
+        try{
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        }catch (SQLException e) {
+            throw new RuntimeException("Error deleting new user");
+        }
+        return null;
+    }
+
     private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
             return null;
