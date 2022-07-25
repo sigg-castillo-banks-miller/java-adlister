@@ -38,7 +38,8 @@ public class RegisterServlet extends HttpServlet {
                 password = BCrypt.hashpw(request.getParameter("password"), BCrypt.gensalt());
                 User newUser = new User(username, email, password);
                 DaoFactory.getUsersDao().insert(newUser);
-                request.getSession().setAttribute("user", newUser);
+                User userRecheck = DaoFactory.getUsersDao().findByUsername(username);
+                request.getSession().setAttribute("user", userRecheck);
                 response.sendRedirect("/profile");
             } else {
                 //If the user inputs have an error, reload the page with an error msg
