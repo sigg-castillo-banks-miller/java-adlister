@@ -9,18 +9,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Search</title>
+        <jsp:include page="/WEB-INF/partials/head.jsp">
+            <jsp:param name="title" value="Search"/>
+        </jsp:include>
     </head>
     <body>
-        <h1>Search</h1>
-        <c:forEach var="ad" items="${ads}">
-        <div class="ads-container ">
-
-            <jsp:include page="/WEB-INF/partials/ad.jsp">
-                <jsp:param name="title" value="${ad.getTitle()}"/>
-                <jsp:param name="description" value="${ad.getDescription()}"/>
-            </jsp:include>
-            </c:forEach>
+        <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
+        <div class="container mx-auto">
+            <div class="ads-container row">
+                <c:forEach var="ad" items="${ads}">
+                    <jsp:include page="/WEB-INF/partials/ad.jsp">
+                        <jsp:param name="title" value="${ad.getTitle()}"/>
+                        <jsp:param name="description" value="${ad.getDescription()}"/>
+                    </jsp:include>
+                </c:forEach>
+            </div>
         </div>
     </body>
 </html>
