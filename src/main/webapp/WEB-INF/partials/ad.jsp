@@ -6,7 +6,10 @@
   Time: 11:59 AM
   To change this template use File | Settings | File Templates.
 --%>
-<div class="ad-card">
-    <h1><c:out value="${param.title}"/></h1>
-    <p><c:out value="${param.description}"/></p>
+
+<div class="card col-4 m-3" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">${param.title}</h5>
+        <p class="card-text">${param.description}</p>
+    </div>
 </div>
