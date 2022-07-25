@@ -33,9 +33,8 @@ public class RegisterServlet extends HttpServlet {
         if (user == null) {
             //Run this if/else statement if no pre-existing user is found
             if (!inputHasErrors) {
-                //If the form entries have no errors, hash the password, build the new user, and push to the database. Then set the user
+                //If the form entries have no errors, build the new user, and push to the database. Then set the user
                 //attribute and redirect to the profile page
-                password = BCrypt.hashpw(request.getParameter("password"), BCrypt.gensalt());
                 User newUser = new User(username, email, password);
                 DaoFactory.getUsersDao().insert(newUser);
                 User userRecheck = DaoFactory.getUsersDao().findByUsername(username);
