@@ -28,8 +28,6 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         User user = DaoFactory.getUsersDao().findByUsername(username);
-
-
         //error messages differentiate between no user found and user found, but password is wrong.
         if (user != null) {
             //create a boolean that sets true if the found user's entered password and hashed password match
