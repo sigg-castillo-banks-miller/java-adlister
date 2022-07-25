@@ -19,8 +19,8 @@
             <div class="ads-container row">
                 <c:forEach var="ad" items="${ads}">
                     <jsp:include page="/WEB-INF/partials/ad.jsp">
-                        <jsp:param name="title" value="${ad.getTitle()}"/>
-                        <jsp:param name="description" value="${ad.getDescription()}"/>
+                        <jsp:param name="title" value="${ad.title}"/>
+                        <jsp:param name="description" value="${ad.description}"/>
                     </jsp:include>
                 </c:forEach>
             </div>
