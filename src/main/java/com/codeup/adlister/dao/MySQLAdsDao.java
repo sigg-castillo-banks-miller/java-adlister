@@ -72,8 +72,13 @@ public class MySQLAdsDao implements Ads {
     public Long delete(Ad ad) {
         PreparedStatement statement = null;
         try{
-            statement = connection.prepareStatement("DELETE FROM ads WHERE title LIKE ?");
+            statement = connection.prepareStatement("DELETE FROM ads WHERE id = ?");
+            statement.setLong(1, ad.getId());
+            statement.executeUpdate();
+        }catch (SQLException e) {
+            throw new RuntimeException("Error deleting ad");
         }
+        return null;
     }
 
     private Ad extractAd(ResultSet rs) throws SQLException {
