@@ -5,6 +5,7 @@ import com.mysql.cj.jdbc.Driver;
 
 import javax.servlet.annotation.WebServlet;
 import java.sql.*;
+
 @WebServlet("/EditProfileServlet")
 public class MySQLUsersDao implements Users {
     private Connection connection;
@@ -13,25 +14,24 @@ public class MySQLUsersDao implements Users {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUser(),
-                config.getPassword()
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
         }
     }
 
-    public void updateUser (User user) {
-
+    public void updateUser(User newUser) {
         try {
             System.out.println("method launch");
             String query = "update users set username=?, email=?, password=? where id=?";
             PreparedStatement p = connection.prepareStatement(query);
-            p.setString(1, user.getUsername());
-            p.setString(2, user.getEmail());
-            p.setString(3, user.getPassword());
-            p.setLong(4, user.getId());
+            p.setString(1, newUser.getUsername());
+            p.setString(2, newUser.getEmail());
+            p.setString(3, newUser.getPassword());
+            p.setLong(4, newUser.getId());
 
             p.executeUpdate();
 
@@ -39,11 +39,6 @@ public class MySQLUsersDao implements Users {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void updateUser() {
-
     }
 
 
@@ -77,14 +72,14 @@ public class MySQLUsersDao implements Users {
     }
 
     private User extractUser(ResultSet rs) throws SQLException {
-        if (! rs.next()) {
+        if (!rs.next()) {
             return null;
         }
         return new User(
-            rs.getLong("id"),
-            rs.getString("username"),
-            rs.getString("email"),
-            rs.getString("password")
+                rs.getLong("id"),
+                rs.getString("username"),
+                rs.getString("email"),
+                rs.getString("password")
         );
     }
 }
