@@ -13,9 +13,9 @@
             <form action="/ads" method="GET" class="text-center">
                 <label>
                     Search:
-                    <input name="query" placeholder="Search here...">
+                    <input name="query" placeholder="Search here..." class="p-2">
                 </label>
-                <input type="submit" value="Search">
+                <input type="submit" value="Search" class="p-2 bg-black text-white border-0">
             </form>
             <h1>Here Are all the ads!</h1>
 
