@@ -21,6 +21,10 @@
                 &nbsp;
             </c:forEach>
         </p>
-
+        <a href="/ad?id=${requestScope.ad.id}">
+            <button type="button" id="view-ad" class="btn btn-primary">
+                Click to View
+            </button>
+        </a>
     </div>
 </div>
