@@ -17,7 +17,6 @@
                 </label>
                 <input type="submit" value="Search" class="p-2 bg-black text-white border-0">
             </form>
-            <h1>Here Are all the ads!</h1>
 
             <div class="ads-container row">
                 <c:forEach var="ad" items="${ads}">
