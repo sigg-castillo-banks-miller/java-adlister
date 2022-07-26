@@ -1,4 +1,4 @@
-<jsp:useBean id="Session" scope="request" type="com.codeup.adlister.dao.Config"/>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -37,27 +37,38 @@
     </div>
 
     <!-- Modal -->
+   <form action="${pageContext.request.contextPath}/profile" method="post">
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Edit Profile</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel" style="margin-left: auto">Edit Profile</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h4>Username: </h4>
-                    <br>
-                    <h4>Password: </h4>
-                    <br>
-
+                    <form>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label" >Edit Username:</label>
+                            <input type="text" class="form-control" id="recipient-name" name="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email-change" class="col-form-label">Edit email:</label>
+                            <input type="email" class="form-control" id="email-change" name="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password-change" class="col-form-label">New Password:</label>
+                            <input type="password" class="form-control" id="password-change" name="password">
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" id="save-btn" value="save-btn" class="btn btn-primary">Save Changes</button>
                 </div>
             </div>
         </div>
     </div>
+</form>
 
 <script>
     document.getElementById("button").addEventListener("click", function (){
