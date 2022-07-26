@@ -2,9 +2,6 @@
 
 <nav class="navbar navbar-expand-lg bg-light mb-3">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/ads">Adlister</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-
         <a class="navbar-brand" href="/ads"><i class="bi bi-newspaper" style="font-size: 2rem"></i>
             <span class="fw-bold text-xxl-start">Adlister</span>
         </a>
@@ -38,13 +35,13 @@
 
 <c:if test="${user != null && user != ' there'}">
     <script>
-        const elem = document.getElementsByClassName("loggedIn");
-        for (let i = 0; i < elem.length; i++) {
-            elem[i].style.display = "block";
-        }
-        const elem2 = document.getElementsByClassName("loggedOut");
-        for (let i = 0; i < elem2.length; i++) {
-            elem2[i].style.display = "none";
-        }
+		const elem = document.getElementsByClassName("loggedIn");
+		for (let i = 0; i < elem.length; i++) {
+			elem[i].style.display = "block";
+		}
+		const elem2 = document.getElementsByClassName("loggedOut");
+		for (let i = 0; i < elem2.length; i++) {
+			elem2[i].style.display = "none";
+		}
     </script>
 </c:if>
