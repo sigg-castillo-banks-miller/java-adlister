@@ -10,8 +10,16 @@
 <div class="card col-4 m-3" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">
-            <a href="/ad?id=${param.id}">${param.title}</a>
+            <a href="/ad?id=${requestScope.ad.id}">${requestScope.ad.title}</a>
         </h5>
-        <p class="card-text">${param.description}</p>
+        <p class="card-text">${requestScope.ad.description}</p>
+        <c:forEach var="category" items="${requestScope.categories}">
+            <p class="card-text">
+                <small class="text-muted">
+                    <a href="/ads?category=${category.id}">${category.name}&nbsp;</a>
+                </small>
+            </p>
+        </c:forEach>
+
     </div>
 </div>
