@@ -5,18 +5,26 @@
         <jsp:include page="/WEB-INF/partials/head.jsp">
             <jsp:param name="title" value="Create a new Ad"/>
         </jsp:include>
+        <script src="${pageContext.request.contextPath}/scripts/ads/create.js" defer></script>
     </head>
     <body>
+        <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
         <div class="container">
+            <c:if test="${param.msg != null}">
+                <div class="alert alert-danger">
+                    <strong><c:out value="${param.msg}"/></strong>
+                </div>
+            </c:if>
+
             <h1>Create a new Ad</h1>
             <form action="/ads/create" method="post" class="d-flex flex-column gap-2">
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input id="title" name="title" class="form-control" type="text" required>
+                    <input id="title" name="title" class="form-control" type="text" value="${param.title}" required>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea id="description" name="description" class="form-control" type="text" required></textarea>
+                    <textarea id="description" name="description" class="form-control" type="text" required>${param.description}</textarea>
                 </div>
                 <div class="form-group">
                     <p>Category:</p>
