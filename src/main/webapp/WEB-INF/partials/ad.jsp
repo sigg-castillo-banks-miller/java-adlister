@@ -9,7 +9,9 @@
 
 <div class="card col-4 m-3" style="width: 18rem;">
     <div class="card-body">
-        <h5 class="card-title">${param.title}</h5>
+        <h5 class="card-title">
+            <a href="/ad?id=${param.id}">${param.title}</a>
+        </h5>
         <p class="card-text">${param.description}</p>
     </div>
 </div>

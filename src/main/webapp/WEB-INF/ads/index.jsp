@@ -24,6 +24,7 @@
                     <jsp:include page="/WEB-INF/partials/ad.jsp">
                         <jsp:param name="title" value="${ad.title}"/>
                         <jsp:param name="description" value="${ad.description}"/>
+                        <jsp:param name="id" value="${ad.id}"/>
                     </jsp:include>
                 </c:forEach>
             </div>
