@@ -19,7 +19,6 @@
                 <div>
                     <h6>email: ${sessionScope.user.email}</h6>
                 </div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Click to Edit</button>
             </div>
         </div>
     </div>
@@ -32,12 +31,12 @@
         </div>
     </div>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <button id="btn" type="button"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Launch static backdrop modal
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="editBtn" style="display: none "  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -56,9 +55,9 @@
     </div>
 
 <script>
-    document.getElementById("button").addEventListener("click", function (){
-        document.querySelector(".modal fade").style.display = "flex"
-    })
+    document.getElementById("btn").addEventListener("click", function (){
+        document.querySelector("#editBtn").style.display = "flex"
+    });
 </script>
 </body>
 </html>
