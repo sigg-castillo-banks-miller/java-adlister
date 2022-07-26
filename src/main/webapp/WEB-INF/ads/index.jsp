@@ -19,13 +19,20 @@
             </form>
 
             <div class="ads-container row">
-                <c:forEach var="ad" items="${ads}">
-                    <jsp:include page="/WEB-INF/partials/ad.jsp">
-                        <jsp:param name="title" value="${ad.title}"/>
-                        <jsp:param name="description" value="${ad.description}"/>
-                        <jsp:param name="id" value="${ad.id}"/>
-                    </jsp:include>
+                <c:forEach var="i" items="${ads}">
+                    <c:set var="ad" value="${i.key}" scope="request"/>
+                    <c:set var="categories" value="${i.value}" scope="request"/>
+                    <c:import url="/WEB-INF/partials/ad.jsp"/>
                 </c:forEach>
+
+                <%--Old version:--%>
+                <%--                <c:forEach var="ad" items="${ads}">--%>
+                <%--                    <jsp:include page="/WEB-INF/partials/ad.jsp">--%>
+                <%--                        <jsp:param name="title" value="${ad.title}"/>--%>
+                <%--                        <jsp:param name="description" value="${ad.description}"/>--%>
+                <%--                        <jsp:param name="id" value="${ad.id}"/>--%>
+                <%--                    </jsp:include>--%>
+                <%--                </c:forEach>--%>
             </div>
         </div>
 

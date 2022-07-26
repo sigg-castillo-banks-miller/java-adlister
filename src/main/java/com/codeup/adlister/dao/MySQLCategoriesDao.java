@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.Category;
 import com.mysql.cj.jdbc.Driver;
 
@@ -62,10 +63,25 @@ public class MySQLCategoriesDao implements Categories {
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()) res = rs.getLong(1);
-            
+
             return res;
         } catch (SQLException e) {
             throw new RuntimeException("Couldn't associate ad with category", e);
+        }
+    }
+
+    @Override
+    public List<Category> getCategoriesForAd(long adId) {
+        List<Category> categories = null;
+        try {
+            String query = "SELECT * FROM categories JOIN ads_categories ON categories.id = ads_categories.category_id WHERE ads_categories.ad_id = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, adId);
+            ResultSet rs = stmt.executeQuery();
+            categories = createCategoriesFromResults(rs);
+            return categories;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -89,4 +105,6 @@ public class MySQLCategoriesDao implements Categories {
         }
 
     }
+
+
 }
