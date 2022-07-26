@@ -17,6 +17,7 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //removal of msg state (error msg) if the user returns to this page again
         request.getSession().removeAttribute("msg");
+        request.getSession().removeAttribute("uName");
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
             return;
@@ -30,7 +31,7 @@ public class LoginServlet extends HttpServlet {
         User user = DaoFactory.getUsersDao().findByUsername(username);
         //error messages differentiate between no user found and user found, but password is wrong.
         if (user != null) {
-            //create a boolean that sets true if the found user's entered password and hashed password match
+            //create a boolean that sets true if the user's entered password and found user's hashed password match
             boolean validAttempt = BCrypt.checkpw(password, user.getPassword());
             //if a user is found by the above if statement and passwords match, then we send to profile and
             //then set the user attribute for use elsewhere.
@@ -39,13 +40,14 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect("/profile");
             } else {
                 //if the password it wrong, we reload the page with this error msg
-                String msg = "Sorry!! You have an error. Please ensure all fields are filled out properly";
+                String msg = "Sorry, your password is incorrect. Please try again.";
                 request.getSession().setAttribute("msg", msg);
+                request.getSession().setAttribute("uName", username);
                 request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             }
         } else {
             //if the entered user is not found, we reload page with this error page.
-            String msg = "Sorry!! This user is not yet registered.";
+            String msg = "Sorry, this user is not yet registered.";
             request.getSession().setAttribute("msg", msg);
             request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
         }
