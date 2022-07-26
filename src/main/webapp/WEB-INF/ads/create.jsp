@@ -19,12 +19,22 @@
                     <textarea id="description" name="description" class="form-control" type="text" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="category">Category</label>
-                    <select id="category" name="category_id" class="p-2 bg-white text-black">
+                    <p>Category:</p>
+                    <div>
                         <c:forEach var="category" items="${categories}">
-                            <option value="${category.id}">${category.name}</option>
+                            <div>
+                                <label for="${category.name}">
+                                    <input type="checkbox" id="${category.name}" name="categories" value="${category.id}">
+                                        ${category.name}
+                                </label>
+                            </div>
                         </c:forEach>
-                    </select>
+                    </div>
+                    <%--<select id="category" name="category_id" class="p-2 bg-white text-black">--%>
+                    <%--    <c:forEach var="category" items="${categories}">--%>
+                    <%--        <option value="${category.id}">${category.name}</option>--%>
+                    <%--    </c:forEach>--%>
+                    <%--</select>--%>
                 </div>
                 <input type="submit" class="btn btn-block btn-primary">
             </form>

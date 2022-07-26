@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
@@ -29,9 +32,11 @@ public class CreateAdServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        long categoryId = Long.parseLong(request.getParameter("category_id"));
+//        long categoryId = Long.parseLong(request.getParameter("category_id"));
+        String[] categories = request.getParameterValues("categories");
+
+
         User user = (User) request.getSession().getAttribute("user");
-        Category category = categoryDao.getCategoryById(categoryId);
 
         Ad ad = new Ad(
                 user.getId(),
@@ -39,7 +44,9 @@ public class CreateAdServlet extends HttpServlet {
                 request.getParameter("description")
         );
         Long adId = DaoFactory.getAdsDao().insert(ad);
-        categoryDao.associateAdWithCategory(adId, categoryId);
+        for (String categoryIdString : categories) {
+            categoryDao.associateAdWithCategory(adId, Long.parseLong(categoryIdString));
+        }
         response.sendRedirect("/ads");
     }
 }
