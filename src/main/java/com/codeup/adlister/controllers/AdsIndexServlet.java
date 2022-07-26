@@ -17,8 +17,13 @@ public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Ads adsDao = DaoFactory.getAdsDao();
         String query = request.getParameter("query");
-
-        List<Ad> ads = query != null ? adsDao.getAdsBySearch(query) : adsDao.all();
+        String categoryId = request.getParameter("category");
+        List<Ad> ads;
+        if (categoryId != null) {
+            ads = adsDao.getAdsByCategoryId(Long.parseLong(categoryId));
+        } else {
+            ads = query != null ? adsDao.getAdsBySearch(query) : adsDao.all();
+        }
 
         request.setAttribute("ads", ads);
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
