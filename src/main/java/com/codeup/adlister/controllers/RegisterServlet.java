@@ -16,6 +16,8 @@ public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Removal of msg state (error msg) if the user returns to this page again
         request.getSession().removeAttribute("msg");
+        request.getSession().removeAttribute("uName");
+        request.getSession().removeAttribute("emailAddy");
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
             return;
@@ -42,15 +44,18 @@ public class RegisterServlet extends HttpServlet {
                 response.sendRedirect("/profile");
             } else {
                 //If the user inputs have an error, reload the page with an error msg
-                String msg = "Sorry!! You have an error. Please ensure all fields are filled out properly";
+                String msg = "Sorry, the entered passwords do not match.";
                 request.getSession().setAttribute("msg", msg);
+                request.getSession().setAttribute("uName", username);
+                request.getSession().setAttribute("emailAddy", email);
                 request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
             }
         } else {
             //If a preexisting user is found to already exist, run this else statement which
             //reloads the page with the error msg
-            String msg = "Sorry!! This username is already taken";
+            String msg = "Sorry, this username is not available";
             request.getSession().setAttribute("msg", msg);
+            request.getSession().setAttribute("emailAddy", email);
             request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
         }
     }
