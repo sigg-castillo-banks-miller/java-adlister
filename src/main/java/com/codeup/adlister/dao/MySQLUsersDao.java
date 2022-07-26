@@ -3,8 +3,9 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
+import javax.servlet.annotation.WebServlet;
 import java.sql.*;
-
+@WebServlet("/EditProfileServlet")
 public class MySQLUsersDao implements Users {
     private Connection connection;
 
@@ -19,6 +20,30 @@ public class MySQLUsersDao implements Users {
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
         }
+    }
+
+    public void updateUser (User user) {
+
+        try {
+            System.out.println("method launch");
+            String query = "update users set username=?, email=?, password=? where id=?";
+            PreparedStatement p = connection.prepareStatement(query);
+            p.setString(1, user.getUsername());
+            p.setString(2, user.getEmail());
+            p.setString(3, user.getPassword());
+            p.setLong(4, user.getId());
+
+            p.executeUpdate();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateUser() {
+
     }
 
 
@@ -61,24 +86,5 @@ public class MySQLUsersDao implements Users {
             rs.getString("email"),
             rs.getString("password")
         );
-    }
-    public void updateUser ( User user) {
-
-        try {
-            String query = "update users set username=?, email=?, password=? where id=?";
-            PreparedStatement p= connection.prepareStatement(query);
-            p.setString(1,user.getUsername());
-            p.setString(2, user.getEmail());
-            p.setString(3, user.getPassword());
-            p.setLong(4, user.getId());
-
-            p.executeUpdate();
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
     }
 }
