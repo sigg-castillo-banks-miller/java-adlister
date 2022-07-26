@@ -3,6 +3,8 @@ USE adlister_db;
 INSERT INTO ads (user_id, title, description)
 VALUES (1, 'Buy this', 'I want to buy this');
 
+INSERT INTO ads_categories
+
 INSERT INTO ads (user_id, title, description)
 VALUES (1, 'Buy that', 'I want to buy that');
 

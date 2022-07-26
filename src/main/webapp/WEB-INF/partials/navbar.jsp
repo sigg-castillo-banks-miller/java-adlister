@@ -1,14 +1,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-light mb-3">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/ads">Adlister</a>
+        <a class="navbar-brand" href="/ads"><i class="bi bi-newspaper" style="font-size: 2rem"></i>
+            <span class="fw-bold text-xxl-start">Adlister</span>
+        </a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item loggedIn" style=display:none>
                 <a class="nav-link active" aria-current="page" href="/ads/create">Create an Ad</a>
             </li>
         </ul>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -32,13 +35,13 @@
 
 <c:if test="${user != null && user != ' there'}">
     <script>
-		const elem = document.getElementsByClassName("loggedIn");
-		for (let i = 0; i < elem.length; i++) {
-			elem[i].style.display = "block";
-		}
-		const elem2 = document.getElementsByClassName("loggedOut");
-		for (let i = 0; i < elem2.length; i++) {
-			elem2[i].style.display = "none";
-		}
+        const elem = document.getElementsByClassName("loggedIn");
+        for (let i = 0; i < elem.length; i++) {
+            elem[i].style.display = "block";
+        }
+        const elem2 = document.getElementsByClassName("loggedOut");
+        for (let i = 0; i < elem2.length; i++) {
+            elem2[i].style.display = "none";
+        }
     </script>
 </c:if>
