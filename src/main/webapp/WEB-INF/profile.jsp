@@ -30,6 +30,11 @@
             </div>
         </div>
     </div>
+
+    <form action="/profile/delete" method="post">
+        <button>Delete Ad</button>
+    </form>
+
     <!-- Button trigger modal -->
     <button id="btn" type="button"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Launch static backdrop modal

@@ -1,5 +1,6 @@
 package com.codeup.adlister.controllers;
 
+import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -15,13 +16,14 @@ import java.io.IOException;
     public class EditProfileServlet extends HttpServlet {
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
           try{
-
               String userName = request.getParameter("username");
               String userEmail = request.getParameter("email");
               String userPassword = request.getParameter("password");
 
               HttpSession s = request.getSession();
+
               User user = (User) s.getAttribute("User");
+
               user.setEmail(userEmail);
               user.setPassword(userPassword);
               user.setUsername(userName);
@@ -32,6 +34,14 @@ import java.io.IOException;
 
 
             request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+        }
+
+        @Override
+        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            super.doPost(req, resp);
+
+
+
         }
     }
 
