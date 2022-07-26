@@ -34,20 +34,27 @@ public class RegisterServlet extends HttpServlet {
         boolean inputHasErrors = username.isEmpty() || email.isEmpty() || password.isEmpty() || (! password.equals(passwordConfirmation));
         if (user == null) {
             //Run this if/else statement if no pre-existing user is found
-            if (!inputHasErrors) {
-                //If the form entries have no errors, build the new user, and push to the database. Then set the user
-                //attribute and redirect to the profile page
-                User newUser = new User(username, email, password);
-                DaoFactory.getUsersDao().insert(newUser);
-                User userRecheck = DaoFactory.getUsersDao().findByUsername(username);
-                request.getSession().setAttribute("user", userRecheck);
-                response.sendRedirect("/profile");
-            } else {
-                //If the user inputs have an error, reload the page with an error msg
-                String msg = "Sorry, the entered passwords do not match.";
+            try {
+                if (!inputHasErrors) {
+                    //If the form entries have no errors, build the new user, and push to the database. Then set the user
+                    //attribute and redirect to the profile page
+                    User newUser = new User(username, email, password);
+                    DaoFactory.getUsersDao().insert(newUser);
+                    User userRecheck = DaoFactory.getUsersDao().findByUsername(username);
+                    request.getSession().setAttribute("user", userRecheck);
+                    response.sendRedirect("/profile");
+                } else {
+                    //If the user inputs have an error, reload the page with an error msg
+                    String msg = "Sorry, the entered passwords do not match.";
+                    request.getSession().setAttribute("msg", msg);
+                    request.getSession().setAttribute("uName", username);
+                    request.getSession().setAttribute("emailAddy", email);
+                    request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
+                }
+            } catch(Exception e) {
+                String msg = "Sorry, the email address is already in use.";
                 request.getSession().setAttribute("msg", msg);
                 request.getSession().setAttribute("uName", username);
-                request.getSession().setAttribute("emailAddy", email);
                 request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
             }
         } else {
