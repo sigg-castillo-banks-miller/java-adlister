@@ -10,7 +10,7 @@
         <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
         <div class="container">
-            <form action="/ads" method="GET" class="text-center">
+            <form action="/ads" method="GET" class="text-center" id="search-form">
                 <label>
                     Search:
                     <input name="query" placeholder="Search here..." class="p-2">
@@ -18,7 +18,8 @@
                 <input type="submit" value="Search" class="p-2 bg-black text-white border-0">
             </form>
 
-            <div class="ads-container row">
+
+            <div class="ads-container row justify-content-center">
                 <c:forEach var="i" items="${ads}">
                     <c:set var="ad" value="${i.key}" scope="request"/>
                     <c:set var="categories" value="${i.value}" scope="request"/>

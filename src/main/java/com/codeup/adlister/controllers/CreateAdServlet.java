@@ -31,9 +31,18 @@ public class CreateAdServlet extends HttpServlet {
                 .forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        long categoryId = Long.parseLong(request.getParameter("category_id"));
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String title = request.getParameter("title").trim();
+        String description = request.getParameter("description").trim();
         String[] categories = request.getParameterValues("categories");
+
+        boolean isValid = !title.trim().equals("") && !description.trim().equals("") && categories != null;
+
+        if (!isValid) {
+            String msg = "Please fill out all fields.";
+            response.sendRedirect(String.format("/ads/create?title=%s&description=%s&msg=%s", title, description, msg));
+            return;
+        }
 
 
         User user = (User) request.getSession().getAttribute("user");

@@ -7,7 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<div class="card col-4 m-3" style="width: 18rem;">
+<div class="card col-4 m-3">
     <div class="card-body">
         <h5 class="card-title">
             <a href="/ad?id=${requestScope.ad.id}"><c:out value="${requestScope.ad.title}"/></a>
