@@ -32,6 +32,7 @@ public class CreateAdServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
         String title = request.getParameter("title").trim();
         String description = request.getParameter("description").trim();
         String[] categories = request.getParameterValues("categories");
@@ -43,7 +44,6 @@ public class CreateAdServlet extends HttpServlet {
             response.sendRedirect(String.format("/ads/create?title=%s&description=%s&msg=%s", title, description, msg));
             return;
         }
-
 
         User user = (User) request.getSession().getAttribute("user");
 
