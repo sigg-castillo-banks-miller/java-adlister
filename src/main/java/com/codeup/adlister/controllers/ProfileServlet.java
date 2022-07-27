@@ -29,6 +29,8 @@ public class ProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Users mySQLUsersDao = DaoFactory.getUsersDao();
         User user = (User) request.getSession().getAttribute("user");
+
+       //Method
         String userName = request.getParameter("username");
         String userEmail = request.getParameter("email");
         String userPassword = request.getParameter("password");
