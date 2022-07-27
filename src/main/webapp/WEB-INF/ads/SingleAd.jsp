@@ -6,7 +6,8 @@
 <body>
 <div>
     <h1>
-        ${sessionScope.Ad.Title}
+        hello
+        ${sessionScope.ads.Title}
     </h1>
 </div>
 </body>
