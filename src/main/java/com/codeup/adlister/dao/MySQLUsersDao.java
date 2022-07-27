@@ -25,7 +25,6 @@ public class MySQLUsersDao implements Users {
 
     public void updateUser(User newUser) {
         try {
-            System.out.println("method launch");
             String query = "update users set username=?, email=?, password=? where id=?";
             PreparedStatement p = connection.prepareStatement(query);
             p.setString(1, newUser.getUsername());
