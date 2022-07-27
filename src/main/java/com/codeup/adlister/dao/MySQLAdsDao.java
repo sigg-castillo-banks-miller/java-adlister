@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public class MySQLAdsDao implements Ads {
-    private Connection connection = null;
+    private Connection connection;
 
     public MySQLAdsDao(Config config) {
         try {
@@ -20,14 +20,14 @@ public class MySQLAdsDao implements Ads {
                 config.getUser(),
                 config.getPassword()
             );
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
         }
     }
 
     @Override
     public List<Ad> all() {
-        PreparedStatement stmt = null;
+        PreparedStatement stmt;
         try {
             stmt = connection.prepareStatement("SELECT * FROM ads");
             ResultSet rs = stmt.executeQuery();
@@ -66,6 +66,28 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    @Override
+    public Long update(Ad ad) {
+
+        try {
+            String insertQuery = "UPDATE ads SET title = ?, description = ?";
+            PreparedStatement statement = connection.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS);
+
+            statement.setString(1, ad.getTitle());
+            statement.setString(2, ad.getDescription());
+
+            statement.executeUpdate();
+
+            ResultSet rs = statement.getGeneratedKeys();
+            rs.next();
+
+             return null;
+
+        }catch (SQLException e) {
+            throw new RuntimeException("Error creating a new ad.",e);
+        }
+    }
+
     public Long destroy(Long id) {
         try {
             String insertQuery = "DELETE FROM ads WHERE id = ?";
@@ -93,10 +115,10 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public List<Ad> getAdsByCategoryId(Long categoryId) {
-        PreparedStatement stmt = null;
+        PreparedStatement stmt;
         try {
             stmt = connection.prepareStatement(
-                    "SELECT * FROM ads JOIN ads_categories ON ads.id = ads_categories.ad_id WHERE ads_categories.category_id = ?"
+            "SELECT * FROM ads JOIN ads_categories ON ads.id = ads_categories.ad_id WHERE ads_categories.category_id = ?"
             );
             stmt.setLong(1, categoryId);
             ResultSet rs = stmt.executeQuery();
@@ -122,15 +144,16 @@ public class MySQLAdsDao implements Ads {
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
-                rs.getLong("id"),
-                rs.getLong("user_id"),
-                rs.getString("title"),
-                rs.getString("description")
+            rs.getLong("id"),
+            rs.getLong("user_id"),
+            rs.getString("title"),
+            rs.getString("description")
         );
     }
 
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
         List<Ad> ads = new ArrayList<>();
+
         while (rs.next()) {
             ads.add(extractAd(rs));
         }
