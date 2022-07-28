@@ -3,8 +3,10 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.Ads;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.dao.MySQLAdsDao;
+import com.codeup.adlister.dao.Users;
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.Category;
+import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,15 +22,23 @@ public class EditAdsServlet extends HttpServlet {
     // Change to post in prod
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Ads getAdsList = DaoFactory.getAdsDao();
 
-        Long adId = Long.parseLong(req.getParameter("id"));
+        ///Method
+
+        Long adId = Long.parseLong(req.getParameter("ad-id"));
         String adTitle = req.getParameter("title");
         String adDescription = req.getParameter("description");
 
-        Ad updateThisAd = new Ad(adId,adTitle,adDescription);
+        Ad updateThisAd = new Ad(adId,0, adTitle,adDescription);
 
-        Long numOfRowsAffected = DaoFactory.getAdsDao().update(updateThisAd);
-        resp.sendRedirect("/ads");
+        System.out.println(updateThisAd.toString());
+
+        DaoFactory.getAdsDao().update(updateThisAd);
+
+        resp.sendRedirect("/profile");
+
+//        resp.sendRedirect("/ads");
 
     }
 }

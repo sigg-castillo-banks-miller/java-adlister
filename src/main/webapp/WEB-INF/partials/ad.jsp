@@ -13,7 +13,7 @@
             <c:out value="${requestScope.ad.title}"/>
         </h5>
         <c:if test="${requestScope.ad.userId == sessionScope.user.id}">
-            <button type="button" id="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <button type="button" data-ad-id=${requestScope.ad.id} id="button" class="btn btn-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal">
                 Click to Edit
             </button>
 
