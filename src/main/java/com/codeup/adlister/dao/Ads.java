@@ -25,4 +25,5 @@ public interface Ads {
 
     Long destroy(Long id);
 
+
 }
