@@ -20,6 +20,7 @@ public interface Ads {
     Long update(Ad ad);
 
 
+
 	List<Ad> getAdsByUser(Long user_id);
 
     Long destroy(Long id);
