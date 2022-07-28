@@ -10,7 +10,7 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
     <div class="body-container">
         <div class="container mx-auto">
-            <h1>Welcome, ${sessionScope.user.username}!</h1>
+            <h1>Welcome ${sessionScope.user.username}!</h1>
         </div>
         <div class="info-container  d-flex justify-content-between align-items-center mx-auto">
             <div class="info-block ">
