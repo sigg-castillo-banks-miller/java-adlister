@@ -3,7 +3,9 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.Ads;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.dao.MySQLAdsDao;
+import com.codeup.adlister.dao.Users;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +23,8 @@ import java.util.List;
             String adId = request.getParameter("id");
             List<Ad> newAd = DaoFactory.getAdsDao().getAdById(Long.parseLong(adId));
             request.setAttribute("ad", newAd.get(0));
+
+
 
 
             request.getRequestDispatcher("/WEB-INF/ads/SingleAd.jsp").forward(request,response);
