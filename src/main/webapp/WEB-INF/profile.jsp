@@ -1,5 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -20,6 +21,7 @@
                 <div>
                     <h6>email: ${sessionScope.user.email}</h6>
                 </div>
+                <br>
                 <!-- Button trigger modal -->
                 <button type="button" id="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                    Click to Edit
@@ -27,14 +29,24 @@
             </div>
         </div>
     </div>
-    <div class="ad-container">
-        <div class="ad-name">
-            <div class="ad-description">
-                <h3> Description</h3>
-                <h4>${sessionScope.ad.description}</h4>
-            </div>
-        </div>
-    </div>
+    <br>
+    <hr>
+
+    <div class="ads-container row justify-content-center">
+        <c:forEach var="i" items="${ads}">
+            <c:set var="ad" value="${i.key}" scope="request"/>
+            <c:set var="categories" value="${i.value}" scope="request"/>
+            <c:import url="/WEB-INF/partials/ad.jsp"/>
+        </c:forEach>
+
+<%--    <div class="ad-container">--%>
+<%--        <div class="ad-name">--%>
+<%--            <div class="ad-description">--%>
+<%--                <h3> Description</h3>--%>
+<%--                <h4>${sessionScope.ad.description}</h4>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
 
     <!-- Modal -->
    <form action="${pageContext.request.contextPath}/profile" method="post">
@@ -49,11 +61,11 @@
                     <form>
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label" >Edit Username:</label>
-                            <input type="text" class="form-control" id="recipient-name" name="username">
+                            <input type="text" class="form-control" id="recipient-name" name="username" value="${sessionScope.user.username}">
                         </div>
                         <div class="mb-3">
                             <label for="email-change" class="col-form-label">Edit email:</label>
-                            <input type="email" class="form-control" id="email-change" name="email">
+                            <input type="email" class="form-control" id="email-change" name="email" value="${sessionScope.user.email}">
                         </div>
                         <div class="mb-3">
                             <label for="password-change" class="col-form-label">New Password:</label>

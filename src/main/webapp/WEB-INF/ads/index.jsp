@@ -38,7 +38,6 @@
         </div>
         <script type="application/javascript">
             let cards = document.querySelectorAll(".ad-card");
-
             for (let card of cards){
                 card.addEventListener("click", function (e){
                     const id = card.getAttribute("data-id")
