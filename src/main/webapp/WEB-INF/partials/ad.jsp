@@ -10,7 +10,7 @@
 <div class="card col-4 m-3 ad-card" data-id="${requestScope.ad.id}">
     <div class="card-body">
         <h5 class="card-title">
-            <a href="/ad?id=${requestScope.ad.id}"><c:out value="${requestScope.ad.title}"/></a>
+            <c:out value="${requestScope.ad.title}"/>
         </h5>
         <p class="card-text"><c:out value="${requestScope.ad.description}"/></p>
         <p class="card-text">
