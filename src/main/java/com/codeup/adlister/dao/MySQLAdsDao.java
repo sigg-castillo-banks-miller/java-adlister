@@ -66,6 +66,20 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    public Long destroy(Long id) {
+        try {
+            String insertQuery = "DELETE FROM ads WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            return rs.getLong(1);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error creating a new ad.", e);
+        }
+    }
+
     @Override
     public List<Ad> getAdsBySearch(String search) {
         PreparedStatement stmt = null;

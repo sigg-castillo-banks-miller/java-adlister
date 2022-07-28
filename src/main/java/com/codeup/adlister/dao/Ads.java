@@ -15,7 +15,12 @@ public interface Ads {
     List<Ad> getAdsBySearch(String search);
 
     List<Ad> getAdsByCategoryId(Long categoryId);
+
     List<Ad> getAdById(Long adId);
 
+
 	List<Ad> getAdsByUser(Long user_id);
+
+    Long destroy(Long id);
+
 }
