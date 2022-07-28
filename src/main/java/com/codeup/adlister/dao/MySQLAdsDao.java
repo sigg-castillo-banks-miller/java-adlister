@@ -16,9 +16,9 @@ public class MySQLAdsDao implements Ads {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                    config.getUrl(),
-                    config.getUser(),
-                    config.getPassword()
+                config.getUrl(),
+                config.getUser(),
+                config.getPassword()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
@@ -71,10 +71,7 @@ public class MySQLAdsDao implements Ads {
             String insertQuery = "DELETE FROM ads WHERE id = ?";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, id);
-            stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
+            return (long) stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new ad.", e);
         }

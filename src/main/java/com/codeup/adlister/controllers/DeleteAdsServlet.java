@@ -19,11 +19,11 @@ import java.util.List;
 public class DeleteAdsServlet extends HttpServlet {
     // Change to post in prod
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long adId = Long.parseLong(req.getParameter("id"));
 
-        DaoFactory.getAdsDao().destroy(adId);
+        Long numOfRowsAffected = DaoFactory.getAdsDao().destroy(adId);
+        resp.sendRedirect("/ads");
 
-        System.out.println(adId);
     }
 }
