@@ -18,7 +18,6 @@
         </div>
         <div id="ad-info">
             <h6> <c:out value="${user.username}"/></h6>
-            <h6> ad-id: <c:out value="${ad.id}"/></h6>
             <h6> <c:out value="${user.id}"/></h6>
         </div>
         <div id="ad-description">
