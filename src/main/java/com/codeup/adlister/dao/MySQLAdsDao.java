@@ -94,7 +94,7 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error retrieving ads by category id.", e);
         }
     }
-
+    @Override
     public List<Ad> getAdById(Long adId) {
         String query = "SELECT * FROM ads WHERE id=?";
         try {
@@ -105,8 +105,9 @@ public class MySQLAdsDao implements Ads {
         } catch (SQLException e){
             throw new RuntimeException("Error when accessing Ad id.");
         }
-
     }
+
+
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
