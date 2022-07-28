@@ -18,10 +18,6 @@ public interface Ads {
 
     List<Ad> getAdById(Long adId);
 
-    Long update(Ad ad);
-
-
-
 	List<Ad> getAdsByUser(Long user_id);
 
     Long update(Ad ad );

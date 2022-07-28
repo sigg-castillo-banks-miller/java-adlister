@@ -82,10 +82,49 @@
     </div>
 </form>
 
-<script>
-    document.getElementById("button").addEventListener("click", function (){
-        document.querySelector("#staticBackdrop").style.display = "flex"
-    })
-</script>
+<%--            ///beginning of ad modal--%>
+
+            <form action="/ads/edit" method="post">
+                <div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="ads" style="margin-left: auto">Edit Ad</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                               <div class="mb-3">
+                                        <label for="ad-title" class="col-form-label" >Edit title:</label>
+                                        <input type="text" class="form-control" id="ad-title" name="title" value="${sessionScope.ads.title}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="ads-description" class="col-form-label">Edit description:</label>
+                                        <input type="text" class="form-control" id="ads-description" name="description" value="${sessionScope.ads.description}">
+                                    </div>
+<%--                                    <div class="mb-3">--%>
+<%--                                        <label for="password-change" class="col-form-label">New Password:</label>--%>
+<%--                                        <input type="password" class="form-control" id="password-change" name="password">--%>
+<%--                                    </div>--%>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" id="ads-save-btn" name='ad-id' value="save-btn" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+<%--            ////end of modal--%>
+        <script>
+            const editBtns = document.querySelectorAll('.edit-btn');
+            for (let btn of editBtns) {
+                btn.addEventListener('click', (e) => {
+                    document.querySelector('#ads-save-btn').value = btn.getAttribute('data-ad-id');
+                })
+            }
+        </script>
+
 </body>
 </html>
