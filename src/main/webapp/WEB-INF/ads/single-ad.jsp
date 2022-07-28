@@ -7,21 +7,23 @@
         </jsp:include>
         <title>SingleAd</title>
     </head>
-    <body data-barba="wrapper">
+    <body>
         <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
-        <main data-barba="container" data-barba-namespace="single-ad">
+        <div id="page-container">
             <div class="ad-container" id="single">
-                <div>
-                    <div>
-                        <h5>
-                            <c:out value="${ad.title}"/>
-                        </h5>
-                    </div>
-                    <div>
-                        <p class="card-text"><c:out value="${ad.description}"/></p>
-                    </div>
+                <div id="ad-title">
+                    <h1 id="ad-title-title">
+                        <c:out value="${ad.title}"/>
+                    </h1>
+                </div>
+                <div id="ad-info">
+                    <h6><c:out value="${user.username}"/></h6>
+                    <h6><c:out value="${user.id}"/></h6>
+                </div>
+                <div id="ad-description">
+                    <p class="card-text"><c:out value="${ad.description}"/></p>
                 </div>
             </div>
-        </main>
+        </div>
     </body>
 </html>
