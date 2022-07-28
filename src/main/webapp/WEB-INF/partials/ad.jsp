@@ -13,6 +13,10 @@
             <c:out value="${requestScope.ad.title}"/>
         </h5>
         <c:if test="${requestScope.ad.userId == sessionScope.user.id}">
+            <button type="button" id="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Click to Edit
+            </button>
+
             <form method="post" action="/ads/delete">
                 <button name="id" value="${requestScope.ad.id}">Delete Ad</button>
             </form>
