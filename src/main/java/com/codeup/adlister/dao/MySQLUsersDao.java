@@ -34,7 +34,6 @@ public class MySQLUsersDao implements Users {
 
             p.executeUpdate();
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -28,6 +28,7 @@ import java.util.List;
 
 
             request.getRequestDispatcher("/WEB-INF/ads/SingleAd.jsp").forward(request,response);
+
         }
     }
 

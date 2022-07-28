@@ -56,7 +56,9 @@ public class ProfileServlet extends HttpServlet {
         String userPassword = request.getParameter("password");
 
         User user2 = new User(user.getId(), userName, userEmail, Password.hash(userPassword));
+
         mySQLUsersDao.updateUser(user2);
+
         request.getSession().setAttribute("user", user2);
 
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
