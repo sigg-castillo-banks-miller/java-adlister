@@ -9,8 +9,8 @@ import java.io.IOException;
 
 @WebServlet(name = "controllers.IndexServlet", urlPatterns = "")
 public class IndexServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/ads");
-    }
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.sendRedirect("/ads");
+	}
 }
