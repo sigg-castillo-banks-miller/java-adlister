@@ -5,7 +5,8 @@
         <a class="navbar-brand" href="/ads"><i class="bi bi-newspaper" style="font-size: 2rem"></i>
             <span class="fw-bold text-xxl-start">Adlister</span>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false"
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,7 +33,6 @@
         </div>
     </div>
 </nav>
-
 <c:if test="${user != null && user != ' there'}">
     <script>
 		const elem = document.getElementsByClassName("loggedIn");

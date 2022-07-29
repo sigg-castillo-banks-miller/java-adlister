@@ -3,7 +3,6 @@
 		transform: translateX(-10%);
 		opacity: 0
 	}
-
 	to {
 		transform: translateX(0);
 		opacity: 1
@@ -13,14 +12,16 @@
 body {
 	animation: fadeIn 500ms forwards;
 
-}#ad-title{
+}
+
+#ad-title {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding: 1em;
 	width: 60%;
 	margin-bottom: 5em;
- }
+}
 
 
 #single {
@@ -32,7 +33,8 @@ body {
 	padding-top: 1em;
 	width: 100%;
 }
-#ad-description{
+
+#ad-description {
 	display: flex;
 	justify-content: center;
 	border: 1px solid black;
@@ -44,20 +46,21 @@ body {
 }
 
 
-#page-container{
+#page-container {
 	background-color: aliceblue;
 	display: flex;
 	justify-content: space-evenly;
 	margin: auto;
 	height: 75%;
 	width: 30%;
-	-webkit-box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
-	-moz-box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
-	box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+	-webkit-box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
+	box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
 	padding: 1em;
 	border-radius: 10px;
 }
-#ad-info{
+
+#ad-info {
 	color: darkgrey;
 	width: 100%;
 	justify-content: start;
