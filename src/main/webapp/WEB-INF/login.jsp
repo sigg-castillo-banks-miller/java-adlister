@@ -29,7 +29,9 @@
                         <label for="password">Password</label>
                         <input id="password" name="password" class="form-control" type="password" required pattern=".{8,}" title="Eight or more characters">
                     </div>
-                    <input type="submit" class="btn btn-primary btn-block" value="Log In">
+                    <div class="form-group mt-2">
+                        <input type="submit" class="btn btn-primary btn-block" value="Log In">
+                    </div>
                 </form>
             </div>
         </main>

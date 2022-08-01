@@ -17,8 +17,7 @@
                         </h1>
                     </div>
                     <div id="ad-info">
-                        <h6><c:out value="${user.username}"/></h6>
-                        <h6><c:out value="${user.id}"/></h6>
+                        <h6>Posted by: <c:out value="${adCreator.username}"/></h6>
                     </div>
                     <div id="ad-description">
                         <p class="card-text"><c:out value="${ad.description}"/></p>
