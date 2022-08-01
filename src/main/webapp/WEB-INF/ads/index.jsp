@@ -28,8 +28,9 @@
             let cards = document.querySelectorAll(".ad-card");
             for (let card of cards) {
                 card.addEventListener("click", function (e) {
+                    e.stopImmediatePropagation();
                     const id = card.getAttribute("data-id")
-                    window.location.href = "/ads/SingleAd?id=" + id;
+                    window.location.href = "/ads/single-ad?id=" + id;
                 })
             }
         </script>
