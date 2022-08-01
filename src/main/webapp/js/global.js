@@ -7,6 +7,8 @@
                 window.scrollTo({
                     top: 0, left: 0
                 });
+                initCards();
+
                 if (window.location.href.indexOf('/logout') !== -1) window.location.href = '/';
             },
             enter: async (data) => {
@@ -26,6 +28,7 @@
             }
         }]
     });
+
 
     const ThemeSwitcher = () => {
         //language=HTML
@@ -60,6 +63,22 @@
             setTheme(theme === 'dark' ? 'light' : 'dark');
         }
     });
+
+
+    const initCards = () => {
+        let cards = document.querySelectorAll('.ad-card');
+        for (let card of cards) {
+
+            card.addEventListener('click', function (e) {
+                const id = card.getAttribute('data-id');
+                console.log(e.target);
+                if (e.target.classList.contains('clickable')) {
+                    barba.go('/ads/ad-details?id=' + id);
+                }
+            });
+        }
+    };
+    initCards();
 
 })();
 

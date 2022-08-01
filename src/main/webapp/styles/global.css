@@ -115,6 +115,9 @@ main {
 	border: 1px solid black !important;
 }
 
+.ad-card {
+	cursor: pointer !important;
+}
 
 input[type] {
 	transition: all 0.3s ease-in-out;
@@ -132,48 +135,52 @@ input[type]:focus {
 	align-items: center;
 	padding: 1em;
 	width: 60%;
-	margin-bottom: 5em;
 }
 
 
 #single {
+	color: #222;
+	background-color: #EEE !important;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	height: 100%;
 	flex-direction: column;
 	padding-top: 1em;
-	width: 100%;
+	width: 50%;
+	box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+
+}
+
+body.dark #single {
+	filter: invert(100%);
 }
 
 #ad-description {
-	display: flex;
-	justify-content: center;
 	border: 1px solid black;
 	border-radius: 10px;
-	width: 100%;
+
+	width: 75%;
 	height: 100%;
 	padding: 1em;
-	margin-top: 3em;
+	margin-bottom: 3em;
 }
 
 
 #page-container {
-	background-color: aliceblue;
 	display: flex;
 	justify-content: space-evenly;
 	margin: auto;
 	height: 75%;
-	width: 30%;
-	-webkit-box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
-	-moz-box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
-	box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
+	width: 100%;
+
 	padding: 1em;
 	border-radius: 10px;
 }
 
+
 #ad-info {
-	color: darkgrey;
 	width: 100%;
 	justify-content: start;
 	padding: 1em;
