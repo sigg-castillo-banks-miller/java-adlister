@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<nav class="navbar navbar-expand-lg bg-light mb-3">
+<nav class="navbar navbar-expand-lg mb-3">
     <div class="container-fluid">
         <a class="navbar-brand" href="/ads"><i class="bi bi-newspaper" style="font-size: 2rem"></i>
             <span class="fw-bold text-xxl-start">Adlister</span>
@@ -35,13 +35,13 @@
 </nav>
 <c:if test="${user != null && user != ' there'}">
     <script>
-		const elem = document.getElementsByClassName("loggedIn");
-		for (let i = 0; i < elem.length; i++) {
-			elem[i].style.display = "block";
-		}
-		const elem2 = document.getElementsByClassName("loggedOut");
-		for (let i = 0; i < elem2.length; i++) {
-			elem2[i].style.display = "none";
-		}
+        const elem = document.getElementsByClassName("loggedIn");
+        for (let i = 0; i < elem.length; i++) {
+            elem[i].style.display = "block";
+        }
+        const elem2 = document.getElementsByClassName("loggedOut");
+        for (let i = 0; i < elem2.length; i++) {
+            elem2[i].style.display = "none";
+        }
     </script>
 </c:if>
