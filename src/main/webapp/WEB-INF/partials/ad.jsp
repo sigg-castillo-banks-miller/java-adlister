@@ -15,21 +15,18 @@
         <p class="card-text">
             <c:forEach var="category" items="${requestScope.categories}">
                 <small class="text-muted">
-                    <a href="/ads?category=${category.id}">${category.name}</a>
+                    <a href="${pageContext.request.contextPath}/ads?category=${category.id}">${category.name}</a>
                 </small>
             </c:forEach>
         </p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <c:if test="${requestScope.ad.userId == sessionScope.user.id}">
-                <form>
-                    <button type="button" data-ad-id="${requestScope.ad.id}" class="btn btn-primary btn-sm"
-                            data-bs-toggle="modal" data-bs-target="#editModal">
-                        Edit Ad
-                    </button>
-                </form>
-                <form method="post" action="/ads/delete">
-                    <button type="button" value="${requestScope.ad.id}" class="btn btn-primary btn-sm">Delete Ad
-                    </button>
+            <c:if test="${requestScope.ad.userId == sessionScope.user.id && requestScope.showAdOptions}">
+                <button type="button" data-ad-id="${requestScope.ad.id}" class="btn btn-primary btn-sm edit-btn"
+                        data-bs-toggle="modal" data-bs-target="#editModal">
+                    Edit Ad
+                </button>
+                <form method="post" action="${pageContext.request.contextPath}/ads/delete" class="m-0">
+                    <button type="submit" name="id" value="${requestScope.ad.id}" class="btn btn-primary btn-sm">Delete Ad</button>
                 </form>
             </c:if>
         </div>

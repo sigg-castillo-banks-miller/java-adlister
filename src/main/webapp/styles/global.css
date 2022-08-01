@@ -34,6 +34,12 @@ body.dark .card {
 	box-shadow: 0 0 25px 0 rgb(0 0 0 / .1) !important;
 }
 
+body.dark .modal-content {
+	background-color: #222 !important;
+	color: var(--text-color) !important;
+	box-shadow: 0 0 25px 0 rgb(0 0 0 / .1) !important;
+}
+
 body.dark .btn-primary {
 	filter: invert(100%) !important;
 }
@@ -108,6 +114,7 @@ main {
 	background-color: white !important;
 	border: 1px solid black !important;
 }
+
 
 input[type] {
 	transition: all 0.3s ease-in-out;

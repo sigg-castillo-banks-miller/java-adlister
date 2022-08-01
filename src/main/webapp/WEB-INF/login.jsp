@@ -2,16 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-    <<<<<<< HEAD
     <head>
         <jsp:include page="/WEB-INF/partials/head.jsp">
             <jsp:param name="title" value="Please Log In"/>
         </jsp:include>
     </head>
-    <body>
+    <body data-barba="wrapper">
         <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
-
-
         <main data-barba="container" data-barba-namespace="login">
             <% String msg;
                 if (session.getAttribute("msg") != null) {
