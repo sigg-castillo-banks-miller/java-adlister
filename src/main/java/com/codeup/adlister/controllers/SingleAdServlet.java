@@ -11,12 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "controllers.singleAdServlet", urlPatterns = "/ads/SingleAd")
+@WebServlet(name = "controllers.SingleAdServlet", urlPatterns = "/ads/ad-details")
 public class SingleAdServlet extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String adId = request.getParameter("id");
-		List<Ad> newAd = DaoFactory.getAdsDao().getAdById(Long.parseLong(adId));
-		request.setAttribute("ad", newAd.get(0));
-		request.getRequestDispatcher("/WEB-INF/ads/SingleAd.jsp").forward(request, response);
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String adId = request.getParameter("id");
+        List<Ad> newAd = DaoFactory.getAdsDao().getAdById(Long.parseLong(adId));
+        request.setAttribute("ad", newAd.get(0));
+        request.getRequestDispatcher("/WEB-INF/ads/ad-details.jsp").forward(request, response);
+    }
 }
+
