@@ -7,12 +7,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <div class="card col-4 m-3 ad-card" data-id="${requestScope.ad.id}">
-    <div class="card-body clickable">
+    <div class="card-body clickable d-flex flex-column ">
         <h5 class="card-title clickable">
             <c:out value="${requestScope.ad.title}"/>
         </h5>
         <p class="card-text clickable"><c:out value="${requestScope.ad.description}"/></p>
-        <p class="card-text">
+        <p class="card-text mt-auto">
             <c:forEach var="category" items="${requestScope.categories}">
                 <small class="text-muted ad-category">
                     <a href="${pageContext.request.contextPath}/ads?category=${category.id}">${category.name}</a>

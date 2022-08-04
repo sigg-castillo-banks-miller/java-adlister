@@ -8,3 +8,5 @@ INSERT INTO categories (name)
 VALUES ('Books');
 INSERT INTO categories (name)
 VALUES ('Movies');
+INSERT INTO categories (name)
+VALUES ('Automotive');

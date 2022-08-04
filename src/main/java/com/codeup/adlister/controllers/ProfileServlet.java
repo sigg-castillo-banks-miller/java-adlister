@@ -21,6 +21,7 @@ import java.util.List;
 public class ProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
+        System.out.println(user);
         request.setAttribute("showAdOptions", true);
         if (user == null) {
             response.sendRedirect("/login");
